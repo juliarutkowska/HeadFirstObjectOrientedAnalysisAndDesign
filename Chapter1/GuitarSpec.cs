@@ -2,12 +2,11 @@ namespace Chapter1;
 
 public class GuitarSpec
 {
-
-    Builder Builder { get; }
-    string Model { get; }
-    Type Type { get; }
-    Wood BackWood { get; }
-    Wood TopWood { get; }
+    public Builder Builder { get; }
+    public string Model { get; }
+    public Type Type { get; }
+    public Wood BackWood { get; }
+    public Wood TopWood { get; }
     
     public GuitarSpec (Builder builder, string model, Type type, Wood backWood, Wood topWood)
     {
