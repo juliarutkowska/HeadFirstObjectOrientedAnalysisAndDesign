@@ -10,9 +10,11 @@ public class Inventory
     }
 
     public void AddGuitar(string serialNumber, double price, Builder builder, string model, Type type, Wood backWood,
-        Wood topWood)
+        Wood topWood, int numberOfStrings)
     {
-        var guitar = new Guitar(serialNumber, price, builder, model, type, backWood, topWood);
+        var guitarSpec = new GuitarSpec(builder, model, type, backWood, topWood, numberOfStrings);
+        var guitar = new Guitar(serialNumber, price, guitarSpec);
+        guitar.NumberOfStrings = numberOfStrings;
         _guitars.Add(guitar);
     }
 
@@ -29,15 +31,21 @@ public class Inventory
         return null!;
     }
 
+
     public List<Guitar> Search(GuitarSpec searchSpec)
     {
         return _guitars.Where(
-            guitar => 
-                guitar.Builder == searchSpec.Builder
-                && guitar.Model.Equals(searchSpec.Model, StringComparison.InvariantCultureIgnoreCase)
-                && guitar.Type == searchSpec.Type
-                && guitar.BackWood == searchSpec.BackWood
-                && guitar.TopWood == searchSpec.TopWood).ToList();
+            guitar => searchSpec.GuitarFulfillsSpec(guitar)).ToList();
+    }
+}
+
+// return _guitars.Where(
+        //     guitar => 
+        //         guitar.Builder == searchSpec.Builder
+        //         && guitar.Model.Equals(searchSpec.Model, StringComparison.InvariantCultureIgnoreCase)
+        //         && guitar.Type == searchSpec.Type
+        //         && guitar.BackWood == searchSpec.BackWood
+        //         && guitar.TopWood == searchSpec.TopWood).ToList();
 
         // foreach (Guitar guitar in _guitars)
         // {
@@ -77,5 +85,3 @@ public class Inventory
         // }
         //
         // return null!;
-    }
-}

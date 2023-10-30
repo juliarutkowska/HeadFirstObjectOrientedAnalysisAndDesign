@@ -9,18 +9,13 @@ public class Guitar
     public Type Type { get; }
     public Wood BackWood { get; }
     public Wood TopWood { get; }
-    private GuitarSpec Spec { get; set; }
+    public GuitarSpec Spec { get; set; }
+    public int NumberOfStrings { get; set; }
     
-    public Guitar(string serialNumber, double price, Builder builder, string model, Type type, Wood backWood, Wood topWood)
+    public Guitar(string serialNumber, double price, GuitarSpec spec)
     {
-        
         SerialNumber = serialNumber;
         Price = price;
-        Builder = builder;
-        Model = model;
-        Type = type;
-        BackWood = backWood;
-        TopWood = topWood;
-        Spec = new GuitarSpec(builder, model, type, backWood, topWood);
+        Spec = spec;
     }
 }
