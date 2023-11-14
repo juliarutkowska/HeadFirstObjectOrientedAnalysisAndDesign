@@ -8,7 +8,7 @@ public class FindGuitarTester
         var inventory = new Inventory();
         InitializeInventory(inventory);
         
-        GuitarSpec whatErinLikes = new GuitarSpec(Builder.Fender, "Stratocastor", Type.Electric, Wood.Alder, Wood.Alder, 6);
+        var whatErinLikes = new GuitarSpec(Builder.Fender, "Stratocastor", Type.Electric, Wood.Alder, Wood.Alder, 6);
 
         var guitars = inventory.Search(whatErinLikes);
 
@@ -16,13 +16,13 @@ public class FindGuitarTester
         {
             foreach (var guitar in guitars)
             {
-                var builder = guitar.Builder;
-                var model = guitar.Model;
-                var type = guitar.Type;
-                var backWood = guitar.BackWood;
-                var topWood = guitar.TopWood;
+                var builder = guitar.Spec.Builder;
+                var model = guitar.Spec.Model;
+                var type = guitar.Spec.Type;
+                var backWood = guitar.Spec.BackWood;
+                var topWood = guitar.Spec.TopWood;
                 var price = guitar.Price;
-                var numberOfStrings = guitar.NumberOfStrings;
+                var numberOfStrings = guitar.Spec.NumberOfStrings;
         
                 Console.WriteLine($"Erin, you might like this {numberOfStrings} strings {builder} {model} {type} guitar:");
                 Console.WriteLine($"{backWood} back and sides,");
