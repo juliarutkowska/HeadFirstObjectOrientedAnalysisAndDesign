@@ -11,7 +11,7 @@ public class BarkRecognizer
 
     public void Recognize(string bark)
     {
-        Console.WriteLine($"    BarkRecognizer: heard a'{bark}'");
+        Console.WriteLine($"    BarkRecognizer: heard a '{bark}'");
         _door.Open();
     }
 }

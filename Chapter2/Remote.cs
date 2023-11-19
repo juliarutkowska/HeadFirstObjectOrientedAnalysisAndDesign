@@ -1,39 +1,30 @@
 namespace Chapter2;
 
 using System;
-using System.Timers;
+
 public class Remote
 {
-    private DogDoor door;
-    private Timer timer;
+    private readonly DogDoor _door;
 
     public Remote(DogDoor door)
     {
-        this.door = door;
-
-        // Initialize the timer
-        timer = new Timer(5000);
-        timer.Elapsed += TimerElapsed;
+        _door = door;
     }
 
     public void PressButton()
     {
         Console.WriteLine("Pressing the remote control button...");
-        if (door.IsOpen())
+        if (_door.IsOpen)
         {
-            door.Close();
+            _door.Close();
         }
         else
         {
-            door.Open();
+            _door.Open();
+            // Simulate the door closing automatically after 5 seconds
+            Thread.Sleep(5000);
+            _door.Close();
         }
-        timer.Start();
-    }
-
-    private void TimerElapsed(object sender, ElapsedEventArgs e)
-    {
-        door.Close();
-        timer.Stop();
     }
 }
 
