@@ -5,7 +5,19 @@ using System.Threading;
 
 public class DogDoor
 {
+    private string _allowedBark;
+    
     public bool IsOpen { get; private set; }
+
+    public string AllowedBark()
+    {
+        return _allowedBark;
+    }
+
+    public void SetAllowedBark(string bark)
+    {
+        _allowedBark = bark;
+    }
 
     public void Open()
     {
@@ -19,6 +31,7 @@ public class DogDoor
         IsOpen = false;
     }
 }
+
 
 
 
