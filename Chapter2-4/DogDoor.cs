@@ -5,18 +5,23 @@ using System.Threading;
 
 public class DogDoor
 {
-    private string _allowedBark;
-    
     public bool IsOpen { get; private set; }
 
-    public string AllowedBark()
+    private readonly List<BarkType> _allowedBarks = new List<BarkType>();
+
+    public void AddAllowedBark(BarkType bark)
     {
-        return _allowedBark;
+        _allowedBarks.Add(bark);
     }
 
-    public void SetAllowedBark(string bark)
+    public List<BarkType> GetAllowedBarks()
     {
-        _allowedBark = bark;
+        return _allowedBarks;
+    }
+
+    public void Close()
+    {
+        Console.WriteLine("The dog door closes.");
     }
 
     public void Open()
@@ -24,18 +29,28 @@ public class DogDoor
         Console.WriteLine("The dog door opens.");
         IsOpen = true;
     }
-
-    public void Close()
-    {
-        Console.WriteLine("The dog door closes.");
-        IsOpen = false;
-    }
 }
+//
+    // private readonly List<Bark> _allowedBarks = new();    
+    //
+    // public IEnumerable<Bark> AllowedBark()
+    // {
+    //     return _allowedBarks;
+    // }
+    //
+    // public void AddAllowedBark(Bark bark) {
+    //     _allowedBarks.Add(bark);
+    // }
+    //
+    
+    //
+    // public void Close()
+    // {
+    //     Console.WriteLine("The dog door closes.");
+    //     IsOpen = false;
+    // }
 
-
-
-
-// namespace Chapter2
+// namespace Chapter2-4
 // {
 //     public class DogDoor
 //     {

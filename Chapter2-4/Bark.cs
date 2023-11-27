@@ -2,6 +2,13 @@ namespace Chapter2;
 
 public class Bark
 {
+    public BarkType Type { get; }
+
+    public Bark(BarkType type)
+    {
+        Type = type;
+    }
+    
     private readonly string _sound;
     public string Sound { get; set; }
 
@@ -25,3 +32,4 @@ public class Bark
         return HashCode.Combine(_sound, Sound);
     }
 }
+
