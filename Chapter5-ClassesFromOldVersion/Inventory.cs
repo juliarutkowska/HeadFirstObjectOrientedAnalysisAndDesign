@@ -1,75 +1,41 @@
+using System.Diagnostics.Metrics;
 namespace Chapter5;
 
 using System.Collections.Generic;
 public class Inventory
 {
-    private readonly List<Instrument?> _inventory = new();
-    
-    public void AddInstrument(string serialNumber, double price, InstrumentSpec spec)
+public List<Guitar> Search(GuitarSpec searchSpec)
     {
-        var instrument = new Instrument(serialNumber, price, spec);
-        _inventory.Add(instrument);
-    }
-
-    public Instrument Get(string serialNumber)
-    {
-        foreach (var instrument in _inventory)
+        List<Guitar> matchingGuitars = new List<Guitar>();
+        foreach (Instrument? instrument in _inventory)
         {
-            if (instrument != null && instrument.SerialNumber.Equals(serialNumber))
+            if (instrument is Guitar guitar && guitar.GetSpec().Matches(searchSpec))
             {
-                return instrument;
+                matchingGuitars.Add(guitar);
             }
         }
-        return null;
+        return matchingGuitars;
     }
-    public List<Instrument> Search(InstrumentSpec searchSpec)
+
+    public List<Guitar> Search(GuitarSpec searchSpec)
     {
-        var matchingInstruments = new List<Instrument>();
-        foreach (var instrument in _inventory)
-        {
-            if (instrument != null && instrument.GetSpec().Matches(searchSpec))
-            {
-                matchingInstruments.Add(instrument);
-            }
-        }
-        return matchingInstruments;
+        return _guitars.Where(
+            guitar => searchSpec.GuitarFulfillsSpec(guitar)).ToList();
     }
-
-}
-//old version:
-    // public List<Guitar> Search(GuitarSpec searchSpec)
-    // {
-    //     List<Guitar> matchingGuitars = new List<Guitar>();
-    //     foreach (Instrument? instrument in _inventory)
-    //     {
-    //         if (instrument is Guitar guitar && guitar.GetSpec().Matches(searchSpec))
-    //         {
-    //             matchingGuitars.Add(guitar);
-    //         }
-    //     }
-    //     return matchingGuitars;
-    // }
-
-    // public List<Guitar> Search(GuitarSpec searchSpec)
-    // {
-    //     return _guitars.Where(
-    //         guitar => searchSpec.GuitarFulfillsSpec(guitar)).ToList();
-    // }
         
-    // public List<Mandolin> Search(MandolinSpec searchSpec)
-    // {
-    //     List<Mandolin> matchingMandolins = new List<Mandolin>();
-    //     foreach (var instrument in _inventory)
-    //     {
-    //         if (instrument is Mandolin mandolin && mandolin.GetSpec().Matches(searchSpec))
-    //         {
-    //             matchingMandolins.Add(mandolin);
-    //         }
-    //     }
-    //     return matchingMandolins;
-    // }
-
-
+    public List<Mandolin> Search(MandolinSpec searchSpec)
+    {
+        List<Mandolin> matchingMandolins = new List<Mandolin>();
+        foreach (var instrument in _inventory)
+        {
+            if (instrument is Mandolin mandolin && mandolin.GetSpec().Matches(searchSpec))
+            {
+                matchingMandolins.Add(mandolin);
+            }
+        }
+        return matchingMandolins;
+    }
+}
 //old version:
     // public Guitar Guitar(string serialNumber)
     // {

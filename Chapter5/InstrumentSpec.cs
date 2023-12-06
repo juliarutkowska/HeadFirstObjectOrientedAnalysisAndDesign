@@ -1,36 +1,32 @@
 namespace Chapter5;
 
-public abstract class InstrumentSpec
-{
-    public Builder Builder { get; set; }
-    public string Model  { get; set; }
-    public Type Type { get; set; }
-    public Wood BackWood { get; set; }
-    public Wood TopWood { get; set; }
+using System.Collections.Generic;
 
-    protected InstrumentSpec(Builder builder, string model, Type type, Wood topWood, Wood backWood)
+public class InstrumentSpec
+{
+    private Dictionary<string, object> _properties;
+    public Dictionary<string, object> Properties { get; set; }
+
+    public InstrumentSpec(Dictionary<string, object> properties)
     {
-        Builder = builder;
-        Model = model;
-        Type = type;
-        BackWood = backWood;
-        TopWood = topWood;
+        _properties = properties != null
+            ? new Dictionary<string, object>(properties)
+            : new Dictionary<string, object>();
+    }
+
+    public object Property(string propertyName)
+    {
+        if (_properties.TryGetValue(propertyName, out var property))
+        {
+            return property;
+        }
+
+        return null;
     }
     
     public bool Matches(InstrumentSpec otherSpec)
     {
-        if (Builder != otherSpec.Builder)
-            return false;
-        if (!string.IsNullOrEmpty(Model) && !Model.Equals("") &&
-            !Model.Equals(otherSpec.Model))
-            return false;
-        if (Type != otherSpec.Type)
-            return false;
-        if (BackWood != otherSpec.BackWood)
-            return false;
-        if (TopWood != otherSpec.TopWood)
-            return false;
-        return true;
+        return otherSpec.Properties.Keys.All(propertyName => _properties.ContainsKey(propertyName) 
+                                                             && _properties[propertyName].Equals(otherSpec.Property(propertyName)));
     }
-    
 }

@@ -1,10 +1,10 @@
 ﻿namespace Chapter5;
 
-public abstract class Instrument
+public class Instrument
 {
     public string SerialNumber { get; set; }
     public double Price { get; set; }
-    public InstrumentSpec Spec { get; set; }
+    private InstrumentSpec Spec { get; set; }
 
     public Instrument(string serialNumber, double price, InstrumentSpec spec)
     {
