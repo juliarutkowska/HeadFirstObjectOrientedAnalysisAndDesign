@@ -3,8 +3,8 @@ namespace Chapter5;
 using System.Collections.Generic;
 public class Inventory
 {
-    private readonly List<Instrument?> _inventory = new();
-    
+    private readonly List<Instrument> _inventory = new List<Instrument>();
+
     public void AddInstrument(string serialNumber, double price, InstrumentSpec spec)
     {
         var instrument = new Instrument(serialNumber, price, spec);
@@ -15,26 +15,27 @@ public class Inventory
     {
         foreach (var instrument in _inventory)
         {
-            if (instrument != null && instrument.SerialNumber.Equals(serialNumber))
+            if (instrument.SerialNumber.Equals(serialNumber))
             {
                 return instrument;
             }
         }
         return null;
     }
+
     public List<Instrument> Search(InstrumentSpec searchSpec)
     {
         var matchingInstruments = new List<Instrument>();
         foreach (var instrument in _inventory)
         {
-            if (instrument != null && instrument.GetSpec().Matches(searchSpec))
+            var instrumentSpec = instrument.GetSpec();
+            if (instrumentSpec.Matches(searchSpec))
             {
                 matchingInstruments.Add(instrument);
             }
         }
         return matchingInstruments;
     }
-
 }
 //old version:
     // public List<Guitar> Search(GuitarSpec searchSpec)

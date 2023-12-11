@@ -26,7 +26,14 @@ public class InstrumentSpec
     
     public bool Matches(InstrumentSpec otherSpec)
     {
-        return otherSpec.Properties.Keys.All(propertyName => _properties.ContainsKey(propertyName) 
-                                                             && _properties[propertyName].Equals(otherSpec.Property(propertyName)));
+        if (otherSpec == null || otherSpec.Properties == null || _properties == null)
+        {
+            return false;
+        }
+
+        return otherSpec.Properties.Keys.All(propertyName =>
+            _properties.TryGetValue(propertyName, out var thisPropertyValue)
+            && otherSpec.Properties.TryGetValue(propertyName, out var otherPropertyValue)
+            && thisPropertyValue?.Equals(otherPropertyValue) == true);
     }
 }
