@@ -1,39 +1,37 @@
-namespace Chapter5;
+namespace chapter5_new;
 
+using System;
 using System.Collections.Generic;
 
 public class InstrumentSpec
 {
     private Dictionary<string, object> _properties;
-    public Dictionary<string, object> Properties { get; set; }
 
     public InstrumentSpec(Dictionary<string, object> properties)
     {
-        _properties = properties != null
-            ? new Dictionary<string, object>(properties)
-            : new Dictionary<string, object>();
+        _properties = properties != null ? new Dictionary<string, object>(properties) : new Dictionary<string, object>();
     }
 
-    public object Property(string propertyName)
+    public object GetProperty(string propertyName)
     {
-        if (_properties.TryGetValue(propertyName, out var property))
-        {
-            return property;
-        }
-
-        return null;
+        return _properties.ContainsKey(propertyName) ? _properties[propertyName] : null;
     }
-    
+
+    public Dictionary<string, object> GetProperties()
+    {
+        return _properties;
+    }
+
     public bool Matches(InstrumentSpec otherSpec)
     {
-        if (otherSpec == null || otherSpec.Properties == null || _properties == null)
+        foreach (var propertyName in otherSpec.GetProperties().Keys)
         {
-            return false;
+            if (!_properties.ContainsKey(propertyName) ||
+                !_properties[propertyName].Equals(otherSpec.GetProperty(propertyName)))
+            {
+                return false;
+            }
         }
-
-        return otherSpec.Properties.Keys.All(propertyName =>
-            _properties.TryGetValue(propertyName, out var thisPropertyValue)
-            && otherSpec.Properties.TryGetValue(propertyName, out var otherPropertyValue)
-            && thisPropertyValue?.Equals(otherPropertyValue) == true);
+        return true;
     }
 }

@@ -1,7 +1,7 @@
 using System.Diagnostics.Metrics;
-namespace Chapter5;
 
-using System.Collections.Generic;
+namespace Chapter5_ClassesFromOldVersion;
+
 public class Inventory
 {
 public List<Guitar> Search(GuitarSpec searchSpec)

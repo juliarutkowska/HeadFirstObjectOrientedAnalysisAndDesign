@@ -1,7 +1,4 @@
-namespace Chapter5;
-
-using System.Collections.Generic;
-
+namespace Chapter5_ClassesFromOldVersion;
 
 public class InstrumentSpec
 {

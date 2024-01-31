@@ -1,4 +1,4 @@
-namespace Chapter5;
+namespace Chapter5_ClassesFromOldVersion;
 
 public class MandolinSpec: InstrumentSpec
 {

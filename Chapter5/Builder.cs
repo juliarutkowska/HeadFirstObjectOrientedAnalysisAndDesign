@@ -1,5 +1,4 @@
-namespace Chapter5;
-
+namespace chapter5_new;
 public enum Builder
 {
     Fender,
@@ -8,6 +7,24 @@ public enum Builder
     Collings,
     Olson,
     Ryan,
-    PRS,
+    Prs,
     Any
+}
+
+public static class BuilderExtensions
+{
+    public static string ToStringValue(this Builder builder)
+    {
+        switch (builder)
+        {
+            case Builder.Fender: return "Fender";
+            case Builder.Martin: return "Martin";
+            case Builder.Gibson: return "Gibson";
+            case Builder.Collings: return "Collings";
+            case Builder.Olson: return "Olson";
+            case Builder.Ryan: return "Ryan";
+            case Builder.Prs: return "PRS";
+            default: return "Unspecified";
+        }
+    }
 }

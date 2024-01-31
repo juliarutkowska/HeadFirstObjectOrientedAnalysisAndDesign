@@ -1,4 +1,5 @@
-namespace Chapter1;
+
+namespace Chapter5_ClassesFromOldVersion;
 
 public class FindGuitarTester
 {

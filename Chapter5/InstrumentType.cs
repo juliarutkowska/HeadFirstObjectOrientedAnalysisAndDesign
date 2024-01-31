@@ -1,4 +1,4 @@
-namespace Chapter5;
+namespace chapter5_new;
 
 public enum InstrumentType
 {
@@ -14,15 +14,15 @@ public static class InstrumentTypeExtensions
 {
     public static string ToStringValue(this InstrumentType instrumentType)
     {
-        return instrumentType switch
+        switch (instrumentType)
         {
-            InstrumentType.Guitar => "Guitar",
-            InstrumentType.Banjo => "Banjo",
-            InstrumentType.Dobro => "Dobro",
-            InstrumentType.Fiddle => "Fiddle",
-            InstrumentType.Bass => "Bass",
-            InstrumentType.Mandolin => "Mandolin",
-            _ => "Unspecified"
-        };
+            case InstrumentType.Guitar: return "Guitar";
+            case InstrumentType.Banjo: return "Banjo";
+            case InstrumentType.Dobro: return "Dobro";
+            case InstrumentType.Fiddle: return "Fiddle";
+            case InstrumentType.Bass: return "Bass";
+            case InstrumentType.Mandolin: return "Mandolin";
+            default: return "Unspecified";
+        }
     }
 }

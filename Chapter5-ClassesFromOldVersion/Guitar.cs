@@ -1,4 +1,6 @@
-namespace Chapter5;
+using System.Diagnostics.Metrics;
+
+namespace Chapter5_ClassesFromOldVersion;
 
 public class Guitar: Instrument
 {
