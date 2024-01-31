@@ -2,7 +2,7 @@ using Xunit.Sdk;
 
 namespace Chapter6;
 
-public class Unit
+public partial class Unit
 {
     private string _type;
     private int _id;

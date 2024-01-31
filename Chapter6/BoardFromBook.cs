@@ -1,14 +1,14 @@
-namespace Chapter6;
 
-using System.Collections.Generic;
+namespace Chapter6
+{
+    using System.Collections.Generic;
 
     public class BoardFromBook
     {
         private int _width, _height;
         private List<List<Tile>> _tiles;
 
-
-        public void Board(int width, int height)
+        public BoardFromBook(int width, int height)
         {
             _width = width;
             _height = height;
@@ -29,8 +29,13 @@ using System.Collections.Generic;
             }
         }
 
-        private Tile GetTile (int x, int y)
+        public Tile GetTile(int x, int y)
         {
+            if (x < 1 || x > _width || y < 1 || y > _height)
+            {
+                throw new ArgumentOutOfRangeException("Invalid tile coordinates");
+            }
+
             return _tiles[x - 1][y - 1];
         }
 
@@ -57,5 +62,4 @@ using System.Collections.Generic;
             return GetTile(x, y).GetUnits();
         }
     }
-
-    
+}
