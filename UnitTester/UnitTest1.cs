@@ -14,10 +14,7 @@ public class UnitTest1
         _testOutputHelper = testOutputHelper;
     }
 
-    [Theory]
-    [InlineData("infantry", "infantry")]
-    [InlineData("cavalry", "cavalry")]
-    [InlineData("archer", "archer")]
+    [Theory, InlineData("infantry", "infantry"), InlineData("cavalry", "cavalry"), InlineData("archer", "archer")]
     public void TestType(string type, string expectedOutputType)
     {
         var unit = new Unit(1000);
@@ -27,9 +24,7 @@ public class UnitTest1
         Assert.Equal(expectedOutputType, outputType);
     }
 
-    [Theory]
-    [InlineData("hitPoints", 25)]
-    [InlineData("strength", 50)]
+    [Theory, InlineData("hitPoints", 25), InlineData("strength", 50)]
     public void TestUnitSpecificProperty(string propertyName, object inputValue)
     {
         var unit = new Unit(1000);
@@ -39,9 +34,7 @@ public class UnitTest1
         Assert.Equal(inputValue, outputValue);
     }
 
-    [Theory]
-    [InlineData("strength")]
-    [InlineData("speed")]
+    [Theory, InlineData("strength"), InlineData("speed")]
     public void TestNonExistentProperty(string propertyName)
     {
         var unit = new Unit(1000);

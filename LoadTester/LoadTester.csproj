@@ -22,7 +22,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Chapter6\Chapter6.csproj" />
+      <ProjectReference Include="..\Chapter10\Chapter10.csproj" />
     </ItemGroup>
 
 </Project>
