@@ -5,14 +5,14 @@ namespace Chapter6;
 public partial class Unit
 {
     private string _type;
-    private int _id;
     private string _name;
     private List<Weapon> _weapons;
     private Dictionary<string, object> _properties;
 
     public Unit(int id)
     {
-        _id = id;
+        Id = id;
+        _properties = new Dictionary<string, object>();
     }
 
     public string Type
@@ -29,7 +29,7 @@ public partial class Unit
 
     public List<Weapon> Weapons => _weapons;
 
-    public int Id => _id;
+    public int Id { get; }
 
     public void AddWeapon(Weapon weapon)
     {
@@ -51,18 +51,53 @@ public partial class Unit
 
     public object GetProperty(string property)
     {
-        if (_properties == null || !_properties.ContainsKey(property))
+        if (_properties == null)
         {
-            throw new NullException("No properties for this Unit");
+            throw new InvalidOperationException("Properties dictionary is null.");
+        }
+
+        if (!_properties.ContainsKey(property))
+        {
+            return null; 
         }
 
         var value = _properties[property];
-        if (value == null)
-        {
-            throw new NullException("Request for non-existent property.");
-        }
-        return value;
+
+        return value; 
     }
+
+    // public object GetProperty(string property)
+    // {
+    //     if (_properties == null)
+    //     {
+    //         throw new InvalidOperationException("Properties dictionary is null.");
+    //     }
+    //
+    //     if (!_properties.ContainsKey(property))
+    //     {
+    //         throw new KeyNotFoundException($"Property '{property}' not found.");
+    //     }
+    //
+    //     var value = _properties[property];
+    //
+    //     if (value == null)
+    //     {
+    //         throw new InvalidOperationException($"Value for property '{property}' is null.");
+    //     }
+    //
+    //     return value;
+        // if (_properties == null || !_properties.ContainsKey(property))
+        // {
+        //     throw new KeyNotFoundException("No properties for this Unit");
+        // }
+        //
+        // var value = _properties[property];
+        // if (value == null)
+        // {
+        //     throw new KeyNotFoundException("Request for non-existent property.");
+        // }
+        // return value;
+    
 }
 // public class Unit
 // {

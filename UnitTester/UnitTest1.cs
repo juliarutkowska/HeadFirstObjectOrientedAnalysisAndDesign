@@ -38,20 +38,26 @@ public class UnitTest1
     public void TestNonExistentProperty(string propertyName)
     {
         var unit = new Unit(1000);
+        unit.SetProperty("existingProperty", "someValue");
 
-        object? outputValue;
-        try
-        {
-            outputValue = unit.GetProperty(propertyName);
-        }
-        catch (NullException testPassed)
-        {
-            _testOutputHelper.WriteLine(testPassed.ToString());
-            throw;
-        }
-        
+        var outputValue = unit.GetProperty(propertyName);
+
         Assert.Null(outputValue);
     }
-    
-    
+    // public void TestNonExistentProperty(string propertyName)
+    // {
+    //     var unit = new Unit(1000);
+    //
+    //     object? outputValue;
+    //     try
+    //     {
+    //         outputValue = unit.GetProperty(propertyName);
+    //     }
+    //     catch (NullException testPassed)
+    //     {
+    //         _testOutputHelper.WriteLine(testPassed.ToString());
+    //         throw;
+    //     }
+    //     
+    //     Assert.Null(outputValue);
 }
