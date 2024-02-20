@@ -2,7 +2,7 @@
 
 public class Station
 {
-    private string Name { get; set; }
+    public string Name { get; set; }
 
     public Station(string name)
     {
