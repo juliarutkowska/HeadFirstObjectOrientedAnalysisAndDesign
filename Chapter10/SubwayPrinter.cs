@@ -15,7 +15,7 @@ public class SubwayPrinter
         var currentLine = connection.LineName;
         var previousLine = currentLine;
 
-        _writer.WriteLine($"Start out at {connection.Station2.Name}.");
+        _writer.WriteLine($"Start out at {connection.Station1.Name}.");
         _writer.WriteLine($"Get on the {currentLine} heading towards {connection.Station2.Name}.");
 
         for (var i = 1; i < route.Count; i++)
