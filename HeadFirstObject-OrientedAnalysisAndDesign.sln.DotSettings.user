@@ -1,11 +1,4 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=3c23e584_002D27a7_002D494f_002Db0cf_002D7c9b5bef3ca3/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="All tests from &amp;lt;UnitTester&amp;gt; #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
-  &lt;Or&gt;
-    &lt;Project Location="/Users/julia/repos/HeadFirstOOA&amp;amp;D/HeadFirstObject-OrientedAnalysisAndDesign/UnitTester" Presentation="&amp;lt;UnitTester&amp;gt;" /&gt;
-    &lt;Project Location="/Users/julia/repos/HeadFirstOOA&amp;amp;D/HeadFirstObject-OrientedAnalysisAndDesign/LoadTester" Presentation="&amp;lt;LoadTester&amp;gt;" /&gt;
-    &lt;Project Location="/Users/julia/repos/HeadFirstOOA&amp;amp;D/HeadFirstObject-OrientedAnalysisAndDesign/UnitGroupTester" Presentation="&amp;lt;UnitGroupTester&amp;gt;" /&gt;
-  &lt;/Or&gt;
-&lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=633aa291_002Dd21f_002D413e_002Da8e7_002D97f1161928cc/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="All tests from &amp;lt;UnitTester&amp;gt;" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
-  &lt;Project Location="/Users/julia/repos/HeadFirstOOA&amp;amp;D/HeadFirstObject-OrientedAnalysisAndDesign/UnitTester" Presentation="&amp;lt;UnitTester&amp;gt;" /&gt;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=047ce69d_002Db040_002D42f7_002Da3e2_002Da80fab80ee65/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="PrintDirections_PrintsDirectionsCorrectly" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;ProjectFile&gt;A83D81D2-3D3F-4374-BF72-B3B0E6086FF2/f:SubwayPrinterTests.cs&lt;/ProjectFile&gt;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

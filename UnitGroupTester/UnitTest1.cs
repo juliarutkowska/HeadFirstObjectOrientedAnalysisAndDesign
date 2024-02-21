@@ -1,13 +1,8 @@
 using Chapter6;
-using System.Collections.Generic;
-using Xunit;
-using AutoFixture;
 using AutoFixture.Xunit2;
 namespace UnitGroupTester;
-using Xunit.Abstractions;
-using Xunit.Sdk;
 
-    public class UnitGroupTests
+public class UnitGroupTests
     {
         [Theory]
         [AutoData]
